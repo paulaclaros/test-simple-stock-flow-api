@@ -1,15 +1,24 @@
 # test-simple-stock-flow-api
 
 > **Prueba Técnica SDD · Ficha ADSO 3413974**  
-> **Aprendiz:** Paula Claros  
-> **Tecnología:** PHP 8.2+ con Laravel 10 (Arquitectura Hexagonal)  
+> **Aprendiz:** Paula Claros ([`paulaclaros`](https://github.com/paulaclaros))  
+> **Tecnología:** PHP 8.2+ con Laravel 10/11 (Arquitectura Onion de 4 Capas + Bootstrap)  
 > **Fecha de entrega:** 2026-10-03 (Horario: 9:00 a. m. a 3:00 p. m.)
+
+---
+
+## 📌 Documentos Técnicos y Guías
+* 🚀 **[ENTREGA-TECNICA.md](docs/ENTREGA-TECNICA.md):** Manual técnico con diagramas Mermaid (Arquitectura, MER, Secuencia de Venta atómica).
+* 🧅 **[ARQUITECTURA-ONION.md](docs/ARQUITECTURA-ONION.md):** Especificación completa de las 4 capas Onion + Bootstrap (`PortBindingsServiceProvider.php`).
+* 📝 **[BITACORA_DESARROLLO_SDD.md](docs/BITACORA_DESARROLLO_SDD.md):** Bitácora cronológica con matriz de cumplimiento de las 12 reglas de negocio (**RN-01 a RN-12**).
+* 📋 **[plan-laravel.md](docs/plan-laravel.md):** Plan detallado de traducción técnica y cronograma de tareas.
+* 🏛️ **[Registros de Decisiones de Arquitectura (ADRs)](docs/adr/):** ADR-005 a ADR-010.
 
 ---
 
 ## 1. Descripción del Repositorio
 
-Este repositorio contiene el **Backend REST** del sistema *Simple Stock Flow*, implementado en **PHP con Laravel** siguiendo una **Arquitectura Hexagonal estricta** (Puertos y Adaptadores).
+Este repositorio contiene el **Backend REST** del sistema *Simple Stock Flow*, implementado en **PHP con Laravel** siguiendo la **Arquitectura Cebolla (Onion Architecture)** con 4 anillos concéntricos y punto de ensamblaje en `app/Bootstrap/`.
 
 El servicio aplica las reglas de negocio del inventario y las ventas, expone el contrato REST en estricto formato `camelCase`, emite tokens de autenticación JWT y es el **único dueño del esquema de base de datos** (`sales` en PostgreSQL 16), el cual crea y puebla automáticamente al arrancar mediante migraciones.
 
