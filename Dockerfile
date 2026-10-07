@@ -17,7 +17,7 @@ WORKDIR /var/www
 
 COPY composer.json ./
 
-RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist
+RUN composer config -g policy.advisories.block false && composer install --no-dev --no-scripts --no-autoloader --prefer-dist --no-audit
 
 COPY . .
 
