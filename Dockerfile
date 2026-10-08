@@ -17,11 +17,9 @@ WORKDIR /var/www
 
 COPY composer.json ./
 
-RUN composer config -g policy.advisories.block false && composer install --no-dev --no-scripts --no-autoloader --prefer-dist --no-audit
+RUN composer install --no-dev --no-scripts --no-autoloader --prefer-dist --no-security-blocking
 
 COPY . .
-
-RUN composer dump-autoload --optimize
 
 RUN mkdir -p storage/app/public/media \
     storage/framework/cache \
@@ -31,6 +29,8 @@ RUN mkdir -p storage/app/public/media \
     bootstrap/cache && \
     chmod -R 777 storage bootstrap/cache && \
     chmod +x docker-entrypoint.sh
+
+RUN composer dump-autoload --optimize --no-scripts
 
 EXPOSE 8080
 

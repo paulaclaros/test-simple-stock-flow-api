@@ -10,6 +10,6 @@ final class HealthController
 {
     public function health(): JsonResponse
     {
-        return response()->json(['status' => 'ok'], 200);
+        return new JsonResponse(['status' => 'ok'], 200);
     }
 }
